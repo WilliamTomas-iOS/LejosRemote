@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.lejosremote.ui.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainFragment_to_admin_pwd"
+            app:destination="@id/admin_pwd"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/admin_pwd"
+        android:name="com.example.lejosremote.admin_pwd.admin_pwd"
+        android:label="admin_pwd"
+        tools:layout="@layout/admin_pwd_fragment">
+        <action
+            android:id="@+id/action_admin_pwd_to_admin_fragment"
+            app:destination="@id/admin_fragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_admin_pwd_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/admin_fragment"
+        android:name="com.example.lejosremote.admin.admin_fragment"
+        android:label="admin_fragment"
+        tools:layout="@layout/admin_fragment">
+        <action
+            android:id="@+id/action_admin_fragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>

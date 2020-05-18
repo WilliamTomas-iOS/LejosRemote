@@ -7,15 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.lejosremote.R
 import com.example.lejosremote.databinding.MainFragmentBinding
 
 
-class MainFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
+class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
 
@@ -36,14 +35,25 @@ class MainFragment : Fragment() {
 
         binding.mainViewModel = viewModel
         binding.lifecycleOwner = this
-//        return inflater.inflate(R.layout.main_fragment, container, false)
-        return binding.root
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel.eventAdmin.observe(viewLifecycleOwner, Observer { admin ->
+            if (admin) {
+                findNavController().navigate(MainFragmentDirections.actionMainFragmentToAdminPwd())
+            }
+        })
+
+        viewModel.eventAuto.observe(viewLifecycleOwner, Observer { auto ->
+            if (auto) {
+                if (binding.auto.text == "Mode auto") {
+                    binding.auto.text = "Mode manu"
+                }
+                else {
+                    binding.auto.text = "Mode auto"
+                }
+            }
+        })
+
+        return binding.root
     }
 
 }
