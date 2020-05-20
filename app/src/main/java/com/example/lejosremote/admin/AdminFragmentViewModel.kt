@@ -4,15 +4,25 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.lejosremote.Data
 
 class AdminFragmentViewModel(application: Application) : AndroidViewModel(application) {
 
     private var data: Data
 
+    private val _mac = MutableLiveData<String>()
+    val mac: LiveData<String>
+        get() = _mac
+
+    private val _mdp = MutableLiveData<String>()
+    val mdp: LiveData<String>
+        get() = _mdp
+
     init {
         data = Data(application.applicationContext)
+        _mac.value = data.getMac()
+        _mdp.value = data.getMdp()
+
     }
 
     fun onLog() {

@@ -36,5 +36,16 @@
         <action
             android:id="@+id/action_admin_fragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_admin_fragment_to_monitoringFragment"
+            app:destination="@id/monitoringFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/monitoringFragment"
+        android:name="com.example.lejosremote.monitoring.MonitoringFragment"
+        android:label="MonitoringFragment" >
+        <action
+            android:id="@+id/action_monitoringFragment_to_admin_fragment"
+            app:destination="@id/admin_fragment" />
     </fragment>
 </navigation>

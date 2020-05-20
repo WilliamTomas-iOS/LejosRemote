@@ -1,12 +1,22 @@
 package com.example.lejosremote.ui.main
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.lejosremote.Data
 import com.example.lejosremote.MyBluetoothAdapter
 
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application)  {
+
+    private var data: Data
+
+    private val _mac = MutableLiveData<String>()
+    val mac: LiveData<String>
+        get() = _mac
+
     private val _eventAdmin = MutableLiveData<Boolean>()
     val eventAdmin: LiveData<Boolean>
         get() = _eventAdmin
@@ -19,8 +29,11 @@ class MainViewModel : ViewModel() {
 
     init {
         Log.i("MainViewModel", "GameVM created !")
-        bt = MyBluetoothAdapter()
+        bt = MyBluetoothAdapter(application.applicationContext)
         bt.connect()
+
+        data = Data(application.applicationContext)
+        _mac.value = data.getMac()
 
         _eventAdmin.value = false
         _eventAuto.value = false
@@ -63,5 +76,10 @@ class MainViewModel : ViewModel() {
 
     fun klaxon() {
         bt.sendMsg(7)
+    }
+
+    fun onNewMacAdress() {
+        bt.disconnect()
+        bt.connect()
     }
 }

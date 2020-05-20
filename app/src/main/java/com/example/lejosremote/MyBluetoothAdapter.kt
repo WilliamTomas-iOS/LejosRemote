@@ -9,7 +9,7 @@ import java.io.OutputStreamWriter
 import java.lang.Exception
 import java.util.*
 
-public class MyBluetoothAdapter {
+public class MyBluetoothAdapter(ctx: Context) {
 //    private object HOLDER {
 //        val INSTANCE = MyBluetoothAdapter()
 //    }
@@ -23,9 +23,9 @@ public class MyBluetoothAdapter {
     private lateinit var device: BluetoothDevice
     private lateinit var output: OutputStreamWriter
 
-//    lateinit var context: Context
+    var context: Context
 
-//    public var MyBluetoothAdapter = com.example.lejosremote.MyBluetoothAdapter()
+    private var data: Data
 
     init {
         bAdapter = BluetoothAdapter.getDefaultAdapter()
@@ -36,10 +36,13 @@ public class MyBluetoothAdapter {
                 bAdapter.enable()
                 Log.i("Init bAdapter", "adapter démarré")
         }
+        context = ctx
+        data = Data(context)
     }
 
     fun connect() {
-        device = bAdapter.getRemoteDevice("00:16:53:80:46:CC")
+        device = bAdapter.getRemoteDevice(data.getMac())
+
         try {
             socket = device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"))
             socket.connect()

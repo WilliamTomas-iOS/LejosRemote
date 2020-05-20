@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.lejosremote.R
 import com.example.lejosremote.databinding.AdminFragmentBinding
@@ -31,6 +32,18 @@ class admin_fragment : Fragment() {
         binding.mainViewModel = viewModel
         binding.lifecycleOwner = this
 
+        viewModel.mac.observe(viewLifecycleOwner, Observer { mac ->
+            if(mac != null){
+                binding.champMac.setText(mac)
+            }
+        })
+
+        viewModel.mdp.observe(viewLifecycleOwner, Observer { mdp ->
+            if(mdp != null){
+                binding.champMdp.setText(mdp)
+            }
+        })
+
         val btnMac = binding.macOk
         btnMac.setOnClickListener({
             viewModel.onUpdateMac(binding.champMac.text.toString())
@@ -38,7 +51,12 @@ class admin_fragment : Fragment() {
 
         val btnMdp = binding.adminOk
         btnMdp.setOnClickListener({
-            viewModel.onUpdateMac(binding.champMdp.text.toString())
+            viewModel.onUpdatePassword(binding.champMdp.text.toString())
+        })
+
+        val btnMonitoring = binding.btnMonitoring
+        btnMonitoring.setOnClickListener({
+            findNavController().navigate(admin_fragmentDirections.actionAdminFragmentToMonitoringFragment())
         })
 
         val callback: OnBackPressedCallback =
