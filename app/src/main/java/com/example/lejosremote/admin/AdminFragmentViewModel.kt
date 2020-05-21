@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.lejosremote.Data
+import com.example.lejosremote.MyBluetoothAdapter
 
 class AdminFragmentViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -18,23 +19,20 @@ class AdminFragmentViewModel(application: Application) : AndroidViewModel(applic
     val mdp: LiveData<String>
         get() = _mdp
 
+    //var bt: MyBluetoothAdapter
+
     init {
         data = Data(application.applicationContext)
         _mac.value = data.getMac()
         _mdp.value = data.getMdp()
 
-    }
-
-    fun onLog() {
-
-    }
-
-    fun onMonitoring() {
+        //bt = MyBluetoothAdapter(application.applicationContext)
+        //bt.connect()
 
     }
 
     fun onShutdown() {
-
+        //bt.sendMsg(99)
     }
 
     fun onUpdateMac(mac: String) {

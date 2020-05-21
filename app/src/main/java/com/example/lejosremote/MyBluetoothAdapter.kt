@@ -1,5 +1,6 @@
 package com.example.lejosremote
 
+import android.app.Application
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
@@ -9,7 +10,7 @@ import java.io.OutputStreamWriter
 import java.lang.Exception
 import java.util.*
 
-public class MyBluetoothAdapter(ctx: Context) {
+object MyBluetoothAdapter: Application() {
 //    private object HOLDER {
 //        val INSTANCE = MyBluetoothAdapter()
 //    }
@@ -36,8 +37,12 @@ public class MyBluetoothAdapter(ctx: Context) {
                 bAdapter.enable()
                 Log.i("Init bAdapter", "adapter démarré")
         }
-        context = ctx
+        context = applicationContext
         data = Data(context)
+
+        Log.i("MyBluetoothAdapter", "adresse mac reçues" + data.getMac())
+
+        connect()
     }
 
     fun connect() {

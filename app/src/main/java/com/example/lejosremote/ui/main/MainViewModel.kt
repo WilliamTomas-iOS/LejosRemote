@@ -25,43 +25,54 @@ class MainViewModel(application: Application) : AndroidViewModel(application)  {
     val eventAuto: LiveData<Boolean>
         get() = _eventAuto
 
-    var bt: MyBluetoothAdapter
+    //var bt: MyBluetoothAdapter
 
     init {
         Log.i("MainViewModel", "GameVM created !")
-        bt = MyBluetoothAdapter(application.applicationContext)
-        bt.connect()
+
+        //bt = MyBluetoothAdapter()
+        //bt.connect()
+
 
         data = Data(application.applicationContext)
         _mac.value = data.getMac()
+
+        Log.i("MainViewModel", "adresse mac : " + mac)
 
         _eventAdmin.value = false
         _eventAuto.value = false
     }
 
+
+
     fun onUp() {
         Log.i("GameViewModel", "Up touched !")
-        bt.sendMsg(1)
+        //bt.sendMsg(1)
+        MyBluetoothAdapter.sendMsg(1)
     }
 
     fun onRight() {
         Log.i("GameViewModel", "Right touched !")
-        bt.sendMsg(2)
+        //bt.sendMsg(2)
+        MyBluetoothAdapter.sendMsg(2)
     }
 
     fun onLeft() {
         Log.i("GameViewModel", "Left touched !")
-        bt.sendMsg(3)
+        //bt.sendMsg(3)
+        MyBluetoothAdapter.sendMsg(3)
     }
 
     fun onDown() {
         Log.i("GameViewModel", "Down touched !")
-        bt.sendMsg(4)
+        //bt.sendMsg(4)
+        MyBluetoothAdapter.sendMsg(4)
     }
 
     fun onAuto() {
         Log.i("GameViewModel", "Auto touched !")
-        bt.sendMsg(5)
+        //bt.sendMsg(5)
+        MyBluetoothAdapter.sendMsg(5)
         _eventAuto.value = true
     }
 
@@ -71,15 +82,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application)  {
     }
 
     fun onOff() {
-        bt.sendMsg(6)
+        //bt.sendMsg(6)
+        MyBluetoothAdapter.sendMsg(6)
     }
 
     fun klaxon() {
-        bt.sendMsg(7)
+        //bt.sendMsg(7)
+        MyBluetoothAdapter.sendMsg(7)
     }
 
     fun onNewMacAdress() {
-        bt.disconnect()
-        bt.connect()
+        //bt.disconnect()
+        //bt.connect()
     }
 }

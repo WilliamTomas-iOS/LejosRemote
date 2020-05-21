@@ -89,6 +89,7 @@
         android:background="#E52E2E"
         android:text="Eteindre EV3"
         android:textColor="#FFFFFF"
+        android:onClick="@{() -> mainViewModel.onShutdown()}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_monitoring" />
