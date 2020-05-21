@@ -24,9 +24,11 @@ object MyBluetoothAdapter: Application() {
     private lateinit var device: BluetoothDevice
     private lateinit var output: OutputStreamWriter
 
-    var context: Context
+    //var context: Context
 
-    private var data: Data
+    lateinit var contextGlobal: Context
+
+    lateinit var data: Data
 
     init {
         bAdapter = BluetoothAdapter.getDefaultAdapter()
@@ -37,15 +39,21 @@ object MyBluetoothAdapter: Application() {
                 bAdapter.enable()
                 Log.i("Init bAdapter", "adapter démarré")
         }
-        context = applicationContext
-        data = Data(context)
+        //context = applicationContext
+        //data = Data(context)
 
         Log.i("MyBluetoothAdapter", "adresse mac reçues" + data.getMac())
 
-        connect()
+        //connect()
+    }
+
+    fun setGlobalContext(ctx: Context) {
+        contextGlobal = ctx
     }
 
     fun connect() {
+        data = Data(contextGlobal)
+
         device = bAdapter.getRemoteDevice(data.getMac())
 
         try {
