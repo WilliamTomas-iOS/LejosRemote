@@ -20,7 +20,7 @@
         android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:text="Connecté à :"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +143,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/klaxon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
@@ -155,7 +155,7 @@
         app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/onoff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="@{() -> mainViewModel.onOff()}"
@@ -164,6 +164,28 @@
         app:layout_constraintStart_toEndOf="@+id/left"
         app:layout_constraintTop_toBottomOf="@+id/up"
         app:srcCompat="@android:drawable/ic_lock_power_off" />
+
+    <Button
+        android:id="@+id/plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:text="+"
+        android:onClick="@{() -> mainViewModel.onPlus()}"
+        app:layout_constraintBottom_toTopOf="@+id/up"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/moins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        android:text="-"
+        android:onClick="@{() -> mainViewModel.onMoins()}"
+        app:layout_constraintBottom_toTopOf="@+id/up"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

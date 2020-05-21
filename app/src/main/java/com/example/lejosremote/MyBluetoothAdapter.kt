@@ -11,20 +11,11 @@ import java.lang.Exception
 import java.util.*
 
 object MyBluetoothAdapter: Application() {
-//    private object HOLDER {
-//        val INSTANCE = MyBluetoothAdapter()
-//    }
-//
-//    companion object {
-//        val INSTANCE: MyBluetoothAdapter by lazy { HOLDER.INSTANCE }
-//    }
 
     private var bAdapter: BluetoothAdapter
     private lateinit var socket: BluetoothSocket
     private lateinit var device: BluetoothDevice
     private lateinit var output: OutputStreamWriter
-
-    //var context: Context
 
     lateinit var contextGlobal: Context
 
@@ -39,21 +30,14 @@ object MyBluetoothAdapter: Application() {
                 bAdapter.enable()
                 Log.i("Init bAdapter", "adapter démarré")
         }
-        //context = applicationContext
-        //data = Data(context)
-
-        Log.i("MyBluetoothAdapter", "adresse mac reçues" + data.getMac())
-
-        //connect()
     }
 
     fun setGlobalContext(ctx: Context) {
         contextGlobal = ctx
+        data = Data(contextGlobal)
     }
 
     fun connect() {
-        data = Data(contextGlobal)
-
         device = bAdapter.getRemoteDevice(data.getMac())
 
         try {

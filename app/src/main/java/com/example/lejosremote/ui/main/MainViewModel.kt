@@ -25,14 +25,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application)  {
     val eventAuto: LiveData<Boolean>
         get() = _eventAuto
 
-    //var bt: MyBluetoothAdapter
-
     init {
         Log.i("MainViewModel", "GameVM created !")
-
-        //bt = MyBluetoothAdapter()
-        //bt.connect()
-
 
         data = Data(application.applicationContext)
         _mac.value = data.getMac()
@@ -47,32 +41,27 @@ class MainViewModel(application: Application) : AndroidViewModel(application)  {
 
     fun onUp() {
         Log.i("GameViewModel", "Up touched !")
-        //bt.sendMsg(1)
-        MyBluetoothAdapter.sendMsg(1)
+        //MyBluetoothAdapter.sendMsg(1)
     }
 
     fun onRight() {
         Log.i("GameViewModel", "Right touched !")
-        //bt.sendMsg(2)
-        MyBluetoothAdapter.sendMsg(2)
+        //MyBluetoothAdapter.sendMsg(2)
     }
 
     fun onLeft() {
         Log.i("GameViewModel", "Left touched !")
-        //bt.sendMsg(3)
-        MyBluetoothAdapter.sendMsg(3)
+        //MyBluetoothAdapter.sendMsg(3)
     }
 
     fun onDown() {
         Log.i("GameViewModel", "Down touched !")
-        //bt.sendMsg(4)
-        MyBluetoothAdapter.sendMsg(4)
+        //MyBluetoothAdapter.sendMsg(4)
     }
 
     fun onAuto() {
         Log.i("GameViewModel", "Auto touched !")
-        //bt.sendMsg(5)
-        MyBluetoothAdapter.sendMsg(5)
+        //MyBluetoothAdapter.sendMsg(5)
         _eventAuto.value = true
     }
 
@@ -82,17 +71,22 @@ class MainViewModel(application: Application) : AndroidViewModel(application)  {
     }
 
     fun onOff() {
-        //bt.sendMsg(6)
-        MyBluetoothAdapter.sendMsg(6)
+        //MyBluetoothAdapter.sendMsg(6)
     }
 
     fun klaxon() {
-        //bt.sendMsg(7)
-        MyBluetoothAdapter.sendMsg(7)
+        //MyBluetoothAdapter.sendMsg(7)
     }
 
     fun onNewMacAdress() {
-        //bt.disconnect()
-        //bt.connect()
+        //MyBluetoothAdapter.connect()
+    }
+
+    fun onPlus() {
+        //MyBluetoothAdapter.sendMsg(8)
+    }
+
+    fun onMoins() {
+        //MyBluetoothAdapter.sendMsg(9)
     }
 }

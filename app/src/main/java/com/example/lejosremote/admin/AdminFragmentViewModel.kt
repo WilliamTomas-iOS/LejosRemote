@@ -19,20 +19,15 @@ class AdminFragmentViewModel(application: Application) : AndroidViewModel(applic
     val mdp: LiveData<String>
         get() = _mdp
 
-    //var bt: MyBluetoothAdapter
-
     init {
         data = Data(application.applicationContext)
         _mac.value = data.getMac()
         _mdp.value = data.getMdp()
 
-        //bt = MyBluetoothAdapter(application.applicationContext)
-        //bt.connect()
-
     }
 
     fun onShutdown() {
-        //bt.sendMsg(99)
+        //MyBluetoothAdapter.sendMsg(99)
     }
 
     fun onUpdateMac(mac: String) {
