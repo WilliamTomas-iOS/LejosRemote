@@ -6,6 +6,8 @@ import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Context
 import android.util.Log
+import java.io.DataInputStream
+import java.io.InputStream
 import java.io.OutputStreamWriter
 import java.lang.Exception
 import java.util.*
@@ -16,6 +18,7 @@ object MyBluetoothAdapter: Application() {
     private lateinit var socket: BluetoothSocket
     private lateinit var device: BluetoothDevice
     private lateinit var output: OutputStreamWriter
+    private lateinit var input: DataInputStream
 
     lateinit var contextGlobal: Context
 
@@ -63,5 +66,17 @@ object MyBluetoothAdapter: Application() {
         } catch (e: Exception) {
             Log.i("Send msg", "erreur envoie du message")
         }
+    }
+
+    fun readMsg() {
+        val bytes: Int
+        val buffer: ByteArray = ByteArray(256)
+        val readMsg: String
+
+        input = DataInputStream(socket.inputStream)
+        bytes = input.read(buffer)
+        readMsg = String(buffer, 0, bytes)
+
+        Log.i("MyBluetoothAdapter", "message reçu : " + readMsg)
     }
 }
