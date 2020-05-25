@@ -149,51 +149,51 @@
 
     <TextView
         android:id="@+id/gyroscope_port"
-        android:layout_width="wrap_content"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:text="port"
+        android:text="S3"
         app:layout_constraintEnd_toStartOf="@+id/gyroscope_val"
         app:layout_constraintTop_toBottomOf="@+id/batterie_port" />
 
     <TextView
         android:id="@+id/luminosite_port"
-        android:layout_width="wrap_content"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:text="port"
+        android:text="S1"
         app:layout_constraintEnd_toStartOf="@+id/luminosite_val"
         app:layout_constraintTop_toBottomOf="@+id/gyroscope_port" />
 
     <TextView
         android:id="@+id/pression_port"
-        android:layout_width="wrap_content"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:text="port"
+        android:text="S4"
         app:layout_constraintEnd_toStartOf="@+id/pression_val"
         app:layout_constraintTop_toBottomOf="@+id/luminosite_port" />
 
     <TextView
         android:id="@+id/moteurG_port"
-        android:layout_width="wrap_content"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:text="port"
+        android:text="D"
         app:layout_constraintEnd_toStartOf="@+id/moteurG_val"
         app:layout_constraintTop_toBottomOf="@+id/pression_port" />
 
     <TextView
         android:id="@+id/moteurD_port"
-        android:layout_width="wrap_content"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:text="port"
+        android:text="A"
         app:layout_constraintEnd_toStartOf="@+id/moteurD_val"
         app:layout_constraintTop_toBottomOf="@+id/moteurG_port" />
 
@@ -212,7 +212,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:text="#VAL"
+        android:text="B - C - S2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
