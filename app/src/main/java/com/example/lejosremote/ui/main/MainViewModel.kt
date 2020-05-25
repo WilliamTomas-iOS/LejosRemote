@@ -8,6 +8,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.lejosremote.Data
 import com.example.lejosremote.MyBluetoothAdapter
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application)  {
 
@@ -25,6 +28,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application)  {
     val eventAuto: LiveData<Boolean>
         get() = _eventAuto
 
+    private val _uidata = MutableLiveData<ByteArray>()
+    val uidata: LiveData<ByteArray>
+        get() = uidata
+
     init {
         Log.i("MainViewModel", "GameVM created !")
 
@@ -35,6 +42,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application)  {
 
         _eventAdmin.value = false
         _eventAuto.value = false
+
+        updateUIWithData()
     }
 
 
@@ -88,5 +97,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application)  {
 
     fun onMoins() {
         //MyBluetoothAdapter.sendMsg(9)
+    }
+
+    fun updateUIWithData() {
+        GlobalScope.launch {
+            while (true) {
+                _uidata.value = MyBluetoothAdapter.readMsg()
+                delay(1000L)
+            }
+        }
     }
 }

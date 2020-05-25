@@ -60,6 +60,22 @@ class MainFragment : Fragment() {
             }
         })
 
+        viewModel.uidata.observe(viewLifecycleOwner, Observer { data ->
+            var angle: Int = 50
+            if (data.size > 0) {
+                binding.vitesse.text = data[2].toString()
+                binding.angle.text = data[1].toString()
+
+                binding.vitesseProgressBar.progress = data[2].toInt()
+                if (data[1].toInt() > 0) {
+                    angle += data[1].toInt()
+                } else {
+                    angle -= data[1].toInt()
+                }
+                binding.angleProgressBar.progress = angle
+            }
+        })
+
         return binding.root
     }
 
