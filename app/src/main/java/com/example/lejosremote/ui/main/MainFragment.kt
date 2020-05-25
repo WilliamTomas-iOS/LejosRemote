@@ -60,7 +60,7 @@ class MainFragment : Fragment() {
             }
         })
 
-        viewModel.uidata.observe(viewLifecycleOwner, Observer { data ->
+        viewModel.dataInterface.observe(viewLifecycleOwner, Observer { data ->
             var angle: Int = 50
             if (data.size > 0) {
                 binding.vitesse.text = data[2].toString()
