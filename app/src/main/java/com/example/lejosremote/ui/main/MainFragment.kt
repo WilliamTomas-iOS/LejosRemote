@@ -56,7 +56,6 @@ class MainFragment : Fragment() {
         viewModel.mac.observe(viewLifecycleOwner, Observer { mac ->
             if (mac != null) {
                 binding.mac.setText(mac)
-                viewModel.onNewMacAdress()
             }
         })
 
