@@ -9,7 +9,7 @@ class MonitoringFragmentViewModel : ViewModel() {
 
     private val _data = MutableLiveData<ByteArray>()
     val data: LiveData<ByteArray>
-        get() = data
+        get() = _data
 
     init {
         _data.value = MyBluetoothAdapter.readMsg()
