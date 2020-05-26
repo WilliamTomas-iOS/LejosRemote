@@ -5,13 +5,14 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.lejosremote.Data
 import com.example.lejosremote.MyBluetoothAdapter
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 abstract class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private var data: Data
+
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private val _mac = MutableLiveData<String>()
     val mac: LiveData<String>
@@ -42,7 +43,11 @@ abstract class MainViewModel(application: Application) : AndroidViewModel(applic
 
         //updateUIWithData()
     }
-    
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
 
     fun onUp() {
         Log.i("GameViewModel", "Up touched !")
@@ -98,10 +103,17 @@ abstract class MainViewModel(application: Application) : AndroidViewModel(applic
     fun updateUIWithData() {
         MyBluetoothAdapter.isConnected.observeForever { connected ->
             if (connected) {
-                GlobalScope.launch {
+//                GlobalScope.launch {
+//                    while (true) {
+//                        _dataInterface.postValue(MyBluetoothAdapter.readMsg())
+//                        delay(1000L)
+//                    }
+//                }
+                Log.i("MainViewModel", "Bien connecté à la brique")
+
+                uiScope.launch {
                     while (true) {
                         _dataInterface.postValue(MyBluetoothAdapter.readMsg())
-                        //_dataInterface.value = MyBluetoothAdapter.readMsg()
                         delay(1000L)
                     }
                 }

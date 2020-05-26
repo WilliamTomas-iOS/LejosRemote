@@ -59,11 +59,6 @@ class admin_fragment : Fragment() {
             findNavController().navigate(admin_fragmentDirections.actionAdminFragmentToMonitoringFragment())
         })
 
-        val btnLog = binding.btnLogs
-        btnLog.setOnClickListener({
-            findNavController().navigate(admin_fragmentDirections.actionAdminFragmentToLogFragment())
-        })
-
         val callback: OnBackPressedCallback =
             object : OnBackPressedCallback(true /* enabled by default */) {
                 override fun handleOnBackPressed() { // Handle the back button event

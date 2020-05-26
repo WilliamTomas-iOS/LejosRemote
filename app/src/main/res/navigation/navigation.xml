@@ -39,9 +39,6 @@
         <action
             android:id="@+id/action_admin_fragment_to_monitoringFragment"
             app:destination="@id/monitoringFragment" />
-        <action
-            android:id="@+id/action_admin_fragment_to_log_fragment"
-            app:destination="@id/log_fragment" />
     </fragment>
     <fragment
         android:id="@+id/monitoringFragment"
@@ -49,14 +46,6 @@
         android:label="MonitoringFragment" >
         <action
             android:id="@+id/action_monitoringFragment_to_admin_fragment"
-            app:destination="@id/admin_fragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/log_fragment"
-        android:name="com.example.lejosremote.log.log_fragment"
-        android:label="log_fragment" >
-        <action
-            android:id="@+id/action_log_fragment_to_admin_fragment"
             app:destination="@id/admin_fragment" />
     </fragment>
 </navigation>

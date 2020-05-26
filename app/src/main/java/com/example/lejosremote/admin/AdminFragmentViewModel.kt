@@ -27,7 +27,7 @@ class AdminFragmentViewModel(application: Application) : AndroidViewModel(applic
     }
 
     fun onLog() {
-        //MyBluetoothAdapter.readMsg()
+        //MyBluetoothAdapter.sendMsg(10)
     }
 
     fun onShutdown() {
