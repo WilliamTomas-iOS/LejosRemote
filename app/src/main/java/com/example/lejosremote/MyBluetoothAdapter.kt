@@ -6,6 +6,8 @@ import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Context
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import java.io.DataInputStream
 import java.io.InputStream
 import java.io.OutputStreamWriter
@@ -13,6 +15,10 @@ import java.lang.Exception
 import java.util.*
 
 object MyBluetoothAdapter: Application() {
+
+    private val _isConnected = MutableLiveData<Boolean>()
+    val isConnected: LiveData<Boolean>
+        get() = _isConnected
 
     private var bAdapter: BluetoothAdapter
     private lateinit var socket: BluetoothSocket
@@ -46,6 +52,7 @@ object MyBluetoothAdapter: Application() {
         try {
             socket = device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"))
             socket.connect()
+            _isConnected.value = true
             Log.i("Connect bAdapter", "connexion à la brique réussi")
         } catch (e: Exception) {
             Log.i("Connect bAdapter", "erreur de connexion à la brique")
