@@ -47,7 +47,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun onUp() {
-        //MyBluetoothAdapter.sendMsg(1)
+        MyBluetoothAdapter.sendMsg(1)
     }
 
     fun onRight() {
