@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.lejosremote.Data
+import com.example.lejosremote.DataFromEV3
 import com.example.lejosremote.MyBluetoothAdapter
 import kotlinx.coroutines.*
 
@@ -88,15 +89,22 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun updateUIWithData() {
-        MyBluetoothAdapter.isConnected.observeForever { connected ->
-            if (connected) {
-                Log.i("MainViewModel", "Bien connecté à la brique")
-
-                uiScope.launch {
-                    while (true) {
-                        _dataInterface.postValue(MyBluetoothAdapter.readMsg())
-                        delay(100L)
-                    }
+//        MyBluetoothAdapter.isConnected.observeForever { connected ->
+//            if (connected) {
+//                Log.i("MainViewModel", "Bien connecté à la brique")
+//
+//                uiScope.launch {
+//                    while (true) {
+//                        _dataInterface.postValue(MyBluetoothAdapter.readMsg())
+//                        delay(100L)
+//                    }
+//                }
+//            }
+//        }
+        DataFromEV3.dataFromEV3.observeForever {elements ->
+            if (elements != null) {
+                while (true) {
+                    _dataInterface.postValue(DataFromEV3.dataFromEV3.value)
                 }
             }
         }

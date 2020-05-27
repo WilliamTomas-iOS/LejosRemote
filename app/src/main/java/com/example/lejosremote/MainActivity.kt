@@ -10,5 +10,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         MyBluetoothAdapter.setGlobalContext(this)
         MyBluetoothAdapter.connect()
+
+        MyBluetoothAdapter.isConnected.observeForever { connected ->
+            if (connected) {
+                DataFromEV3.getDataFromEV3()
+            }
+        }
     }
 }
