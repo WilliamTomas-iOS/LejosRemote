@@ -1,19 +1,14 @@
 package com.example.lejosremote.ui.main
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.lejosremote.Data
 import com.example.lejosremote.DataFromEV3
 import com.example.lejosremote.MyBluetoothAdapter
-import kotlinx.coroutines.*
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private var data: Data
-
-    private var viewModelJob = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private val _mac = MutableLiveData<String>()
     val mac: LiveData<String>
@@ -40,11 +35,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         _eventAuto.value = false
 
         updateUIWithData()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
     }
 
     fun onUp() {
@@ -89,18 +79,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun updateUIWithData() {
-//        MyBluetoothAdapter.isConnected.observeForever { connected ->
-//            if (connected) {
-//                Log.i("MainViewModel", "Bien connecté à la brique")
-//
-//                uiScope.launch {
-//                    while (true) {
-//                        _dataInterface.postValue(MyBluetoothAdapter.readMsg())
-//                        delay(100L)
-//                    }
-//                }
-//            }
-//        }
         DataFromEV3.dataFromEV3.observeForever {elements ->
             if (elements != null) {
                 _dataInterface.postValue(DataFromEV3.dataFromEV3.value)
