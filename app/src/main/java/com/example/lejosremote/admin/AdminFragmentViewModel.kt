@@ -27,11 +27,11 @@ class AdminFragmentViewModel(application: Application) : AndroidViewModel(applic
     }
 
     fun onLog() {
-        //MyBluetoothAdapter.sendMsg(10)
+        MyBluetoothAdapter.sendMsg(10)
     }
 
     fun onShutdown() {
-        //MyBluetoothAdapter.sendMsg(99)
+        MyBluetoothAdapter.sendMsg(99)
     }
 
     fun onUpdateMac(mac: String) {

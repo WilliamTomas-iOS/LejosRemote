@@ -103,9 +103,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 //        }
         DataFromEV3.dataFromEV3.observeForever {elements ->
             if (elements != null) {
-                while (true) {
-                    _dataInterface.postValue(DataFromEV3.dataFromEV3.value)
-                }
+                _dataInterface.postValue(DataFromEV3.dataFromEV3.value)
             }
         }
     }
