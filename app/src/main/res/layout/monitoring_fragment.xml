@@ -28,6 +28,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/distance_title"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Distance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/batterie_title" />
+
+    <TextView
         android:id="@+id/gyroscope_title"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
@@ -35,7 +45,7 @@
         android:layout_marginTop="24dp"
         android:text="Gyroscope"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/batterie_title" />
+        app:layout_constraintTop_toBottomOf="@+id/distance_title" />
 
     <TextView
         android:id="@+id/luminosite_title"
@@ -88,7 +98,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/gyroscope_val"
+        android:id="@+id/distance_val"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -96,6 +106,16 @@
         android:text="#VAL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/batterie_val" />
+
+    <TextView
+        android:id="@+id/gyroscope_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="#VAL"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distance_val" />
 
     <TextView
         android:id="@+id/luminosite_val"
@@ -148,6 +168,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/distance_port"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:text="S2"
+        app:layout_constraintEnd_toStartOf="@+id/distance_val"
+        app:layout_constraintTop_toBottomOf="@+id/batterie_port" />
+
+    <TextView
         android:id="@+id/gyroscope_port"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
@@ -155,7 +185,7 @@
         android:layout_marginEnd="32dp"
         android:text="S3"
         app:layout_constraintEnd_toStartOf="@+id/gyroscope_val"
-        app:layout_constraintTop_toBottomOf="@+id/batterie_port" />
+        app:layout_constraintTop_toBottomOf="@+id/distance_port" />
 
     <TextView
         android:id="@+id/luminosite_port"

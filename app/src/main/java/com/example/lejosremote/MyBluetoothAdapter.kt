@@ -77,7 +77,7 @@ object MyBluetoothAdapter: Application() {
 
     fun readMsg(): ByteArray {
         val bytes: Int
-        val buffer: ByteArray = ByteArray(16)
+        val buffer: ByteArray = ByteArray(64)
 
         input = DataInputStream(socket.inputStream)
         bytes = input.read(buffer, 0, 6)
