@@ -17,7 +17,7 @@ object DataFromEV3 {
         uiScope.launch {
             while (true) {
                 _dataFromEV3.postValue(MyBluetoothAdapter.readMsg())
-                delay(100L)
+                delay(150L)
             }
         }
     }

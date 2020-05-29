@@ -54,7 +54,4 @@ class admin_pwd : Fragment() {
 
         return binding.root
     }
-
-
-
 }

@@ -76,11 +76,10 @@ object MyBluetoothAdapter: Application() {
     }
 
     fun readMsg(): ByteArray {
-        val bytes: Int
-        val buffer: ByteArray = ByteArray(64)
+        val buffer: ByteArray = ByteArray(8)
 
         input = DataInputStream(socket.inputStream)
-        bytes = input.read(buffer, 0, 6)
+        input.read(buffer, 0, 8)
 
         Log.i("MyBluetoothAdapter", "message reçu vitesse : " + buffer[2])
 
