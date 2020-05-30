@@ -42,13 +42,13 @@ class MonitoringFragment : Fragment() {
 
         viewModel.data.observe(viewLifecycleOwner, Observer { data ->
             if (data.size > 0) {
-                //binding.distanceVal.text = data[].toString()
-                binding.batterieVal.text = data[5].toString()
-                binding.gyroscopeVal.text = data[1].toString()
-                binding.luminositeVal.text = data[3].toString()
+                binding.distanceVal.text = (data[6]*125+data[7]).toString()+" cm"
+                binding.batterieVal.text = data[5].toString()+" %"
+                binding.gyroscopeVal.text = data[1].toString()+" °"
+                binding.luminositeVal.text = data[3].toString()+" %"
                 binding.pressionVal.text = data[4].toString()
-                binding.moteurDVal.text = (data[2]*10).toString()
-                binding.moteurGVal.text = (data[2]*10).toString()
+                binding.moteurDVal.text = (data[2]*10).toString()+"rpm"
+                binding.moteurGVal.text = (data[2]*10).toString()+"rpm"
 
             }
         })
